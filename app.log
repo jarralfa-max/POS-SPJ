@@ -1,0 +1,303 @@
+2026-02-27 11:23:01 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 11:23:22 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 11:23:22 [INFO    ] spj.migrations: Migration v1 aplicada: Esquema base SPJ enterprise
+2026-02-27 11:23:22 [INFO    ] spj.migrations: Migration v2 aplicada: Tablas sync offline-first
+2026-02-27 11:23:22 [INFO    ] spj.migrations: Migration v3 aplicada: Índices de performance
+2026-02-27 11:23:22 [INFO    ] spj.migrations: Migration v4 aplicada: Normalización modulos_permitidos JSON
+2026-02-27 11:23:22 [INFO    ] spj.migrations: Migration v5 aplicada: Reparación columnas faltantes (categorias + sync)
+2026-02-27 11:23:22 [INFO    ] spj.migrations: Migration v6 aplicada: Reparación exhaustiva todas las tablas
+2026-02-27 11:23:23 [INFO    ] spj.migrations: Migration v7 aplicada: PolloEngine enterprise — lote_id + transformaciones
+2026-02-27 11:23:23 [INFO    ] spj.migrations: Migration v8 aplicada: Enterprise pollo multi-sucursal — tablas completas
+2026-02-27 11:23:23 [INFO    ] spj.migrations: Migration v9 aplicada: Industrial FIFO — chicken_batches + branch_inventory_batches + system_locks + índices enterprise
+2026-02-27 11:23:24 [INFO    ] spj.migrations: Migration v10 aplicada: Recetas consumo producto — product_recipes (surtidos/retazos/combos)
+2026-02-27 11:23:24 [INFO    ] spj.migrations: Migration v11 aplicada: Endurecimiento estructural — parent_batch_id, conciliation_runs, índices enterprise
+2026-02-27 11:23:24 [INFO    ] spj.migrations: Migration v12 aplicada: Inventario enterprise pollería — global/sucursal/recepciones/recetas/traspasos
+2026-02-27 11:23:24 [INFO    ] spj.migrations: Migration v13 aplicada: v8 Industrial — root_batch_id, origin_device_id, costo_unitario_real, margen_real, índices
+2026-02-27 11:23:24 [INFO    ] spj.migrations: Migration v14 aplicada: v9 Enterprise — card_batches, loyalty_scores, forecast_cache, hardware_config, ticket_design, compras_inventariables
+2026-02-27 11:23:24 [INFO    ] spj.migrations: Migration v15 aplicada: v9.1 — product_recipes_abarrotes (recetas ingredientes), movimientos_inventario cols extras
+2026-02-27 11:23:24 [INFO    ] spj.main: Migraciones aplicadas: 15
+2026-02-27 11:23:24 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 11:23:24 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 11:40:18 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 11:40:27 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 11:40:27 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 11:40:27 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 11:42:25 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 11:42:30 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 11:42:30 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 11:42:30 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 12:04:22 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 12:04:27 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 12:04:27 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 12:04:27 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 12:16:33 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 12:16:37 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 12:16:38 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 12:16:38 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 12:18:47 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 12:18:51 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 12:18:51 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 12:18:51 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 12:21:09 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 12:21:12 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 12:21:12 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 12:21:12 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 12:21:53 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 12:21:55 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 12:21:55 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 12:21:55 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 12:24:24 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 12:24:33 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 12:26:47 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 12:26:51 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 12:26:51 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 12:26:51 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 12:31:54 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 12:31:59 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 12:31:59 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 12:31:59 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 12:34:48 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 12:34:51 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 12:34:51 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 12:34:51 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 12:36:13 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 12:36:15 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 12:36:16 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 12:36:16 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 12:37:17 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 12:37:19 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 12:37:19 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 12:37:19 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 12:39:26 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 12:39:29 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 12:39:30 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 12:39:30 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 12:44:01 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 12:44:06 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 12:44:06 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 12:44:06 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 12:53:18 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 12:53:22 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 12:53:22 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 12:53:22 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 12:53:53 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 12:53:56 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 12:53:56 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 12:53:56 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 12:56:12 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 12:56:16 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 12:56:16 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 12:56:16 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 12:57:14 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 12:57:19 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 12:57:19 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 12:57:19 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 13:03:19 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 13:05:00 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 13:05:05 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 13:05:05 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 13:05:05 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 13:07:59 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 13:08:05 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 13:08:06 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 13:08:06 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 13:09:11 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 13:09:14 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 13:09:14 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 13:09:14 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 13:11:40 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 13:11:44 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 13:11:45 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 13:11:45 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 13:13:49 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 13:13:52 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 13:13:52 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 13:13:52 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 13:14:14 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 13:14:17 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 13:14:17 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 13:14:17 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 13:17:27 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 13:17:30 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 13:17:31 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 13:17:31 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 13:19:11 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 13:19:18 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 13:19:18 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 13:19:18 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 13:21:04 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 13:21:10 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 13:21:10 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 13:21:10 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 13:24:09 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 13:24:13 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 13:24:13 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 13:24:13 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 13:27:04 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 13:27:09 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 13:27:09 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 13:27:09 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 13:28:50 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 13:28:54 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 13:28:54 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 13:28:54 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 13:30:09 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 13:30:17 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 13:30:18 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 13:30:18 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 13:31:44 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 13:31:49 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 13:31:49 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 13:31:49 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 13:33:04 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 13:33:09 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 13:33:09 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 13:33:09 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 13:33:56 [INFO    ] spj.security: Password usuario#1 migrado a bcrypt
+2026-02-27 13:33:56 [INFO    ] spj.security: Login exitoso: usuario=admin rol=admin
+2026-02-27 13:33:59 [INFO    ] spj.main: Login OK: admin (admin) → sucursal Principal
+2026-02-27 13:40:01 [INFO    ] spj.forecast: forecast sucursal=1 horizonte=14 metodo=media_movil productos=0 registros=0
+2026-02-27 13:40:01 [INFO    ] spj.forecast: forecast sucursal=1 horizonte=16 metodo=media_movil productos=0 registros=0
+2026-02-27 13:41:12 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 13:41:16 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 13:41:16 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 13:41:16 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 13:41:55 [INFO    ] spj.security: Login exitoso: usuario=admin rol=admin
+2026-02-27 13:42:00 [INFO    ] spj.main: Login OK: admin (admin) → sucursal Principal
+2026-02-27 13:58:01 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 13:58:06 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 13:58:06 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 13:58:06 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 13:58:37 [INFO    ] spj.security: Login exitoso: usuario=admin rol=admin
+2026-02-27 13:58:40 [INFO    ] spj.main: Login OK: admin (admin) → sucursal Principal
+2026-02-27 20:19:23 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\logs\errors.log
+2026-02-27 20:19:36 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_Enterprise_v10\SPJ_POS_Enterprise_v10\data\punto_venta.db
+2026-02-27 20:19:36 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 20:19:36 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 21:54:44 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\errors.log
+2026-02-27 21:54:57 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\data\punto_venta.db
+2026-02-27 21:55:01 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 21:55:01 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 21:55:10 [INFO    ] spj.ventas: ✅ Eventos del sistema conectados correctamente
+2026-02-27 21:55:10 [INFO    ] spj.ventas: ✅ Tema 'Oscuro Moderno' aplicado correctamente al módulo de ventas
+2026-02-27 21:59:03 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\errors.log
+2026-02-27 21:59:06 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\data\punto_venta.db
+2026-02-27 21:59:06 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 21:59:06 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 21:59:08 [INFO    ] spj.ventas: ✅ Eventos del sistema conectados correctamente
+2026-02-27 21:59:08 [INFO    ] spj.ventas: ✅ Tema 'Oscuro Moderno' aplicado correctamente al módulo de ventas
+2026-02-27 22:01:46 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\errors.log
+2026-02-27 22:01:48 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\data\punto_venta.db
+2026-02-27 22:01:48 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 22:01:48 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 22:01:50 [INFO    ] spj.ventas: ✅ Eventos del sistema conectados correctamente
+2026-02-27 22:01:50 [INFO    ] spj.ventas: ✅ Tema 'Oscuro Moderno' aplicado correctamente al módulo de ventas
+2026-02-27 22:04:12 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\errors.log
+2026-02-27 22:04:14 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\data\punto_venta.db
+2026-02-27 22:04:14 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 22:04:14 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 22:04:15 [INFO    ] spj.ventas: ✅ Eventos del sistema conectados correctamente
+2026-02-27 22:04:15 [INFO    ] spj.ventas: ✅ Tema 'Oscuro Moderno' aplicado correctamente al módulo de ventas
+2026-02-27 22:06:20 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\errors.log
+2026-02-27 22:06:22 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\data\punto_venta.db
+2026-02-27 22:06:22 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 22:06:22 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 22:06:23 [INFO    ] spj.ventas: ✅ Eventos del sistema conectados correctamente
+2026-02-27 22:06:23 [INFO    ] spj.ventas: ✅ Tema 'Oscuro Moderno' aplicado correctamente al módulo de ventas
+2026-02-27 22:07:45 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\errors.log
+2026-02-27 22:08:04 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\errors.log
+2026-02-27 22:09:32 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\errors.log
+2026-02-27 22:09:35 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\data\punto_venta.db
+2026-02-27 22:09:35 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 22:09:35 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 22:09:36 [INFO    ] spj.ventas: ✅ Eventos del sistema conectados correctamente
+2026-02-27 22:09:36 [INFO    ] spj.ventas: ✅ Tema 'Oscuro Moderno' aplicado correctamente al módulo de ventas
+2026-02-27 22:11:03 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\errors.log
+2026-02-27 22:11:06 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\data\punto_venta.db
+2026-02-27 22:11:06 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 22:11:06 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 22:11:06 [INFO    ] spj.ventas: ✅ Eventos del sistema conectados correctamente
+2026-02-27 22:11:06 [INFO    ] spj.ventas: ✅ Tema 'Oscuro Moderno' aplicado correctamente al módulo de ventas
+2026-02-27 22:13:52 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\errors.log
+2026-02-27 22:13:54 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\data\punto_venta.db
+2026-02-27 22:13:54 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 22:13:54 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 22:13:55 [INFO    ] spj.ventas: ✅ Eventos del sistema conectados correctamente
+2026-02-27 22:13:55 [INFO    ] spj.ventas: ✅ Tema 'Oscuro Moderno' aplicado correctamente al módulo de ventas
+2026-02-27 22:15:26 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\errors.log
+2026-02-27 22:15:28 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\data\punto_venta.db
+2026-02-27 22:15:28 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 22:15:28 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 22:15:29 [INFO    ] spj.ventas: ✅ Eventos del sistema conectados correctamente
+2026-02-27 22:15:29 [INFO    ] spj.ventas: ✅ Tema 'Oscuro Moderno' aplicado correctamente al módulo de ventas
+2026-02-27 22:18:07 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\errors.log
+2026-02-27 22:18:10 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\data\punto_venta.db
+2026-02-27 22:18:10 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 22:18:10 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 22:18:11 [INFO    ] spj.ventas: ✅ Eventos del sistema conectados correctamente
+2026-02-27 22:18:11 [INFO    ] spj.ventas: ✅ Tema 'Oscuro Moderno' aplicado correctamente al módulo de ventas
+2026-02-27 22:19:51 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\errors.log
+2026-02-27 22:19:53 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\data\punto_venta.db
+2026-02-27 22:19:53 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 22:19:53 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 22:19:54 [INFO    ] spj.ventas: ✅ Eventos del sistema conectados correctamente
+2026-02-27 22:19:54 [INFO    ] spj.ventas: ✅ Tema 'Oscuro Moderno' aplicado correctamente al módulo de ventas
+2026-02-27 22:21:31 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\errors.log
+2026-02-27 22:21:33 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\data\punto_venta.db
+2026-02-27 22:21:33 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 22:21:33 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 22:21:33 [INFO    ] spj.ventas: ✅ Eventos del sistema conectados correctamente
+2026-02-27 22:21:33 [INFO    ] spj.ventas: ✅ Tema 'Oscuro Moderno' aplicado correctamente al módulo de ventas
+2026-02-27 22:27:19 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\errors.log
+2026-02-27 22:27:22 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\data\punto_venta.db
+2026-02-27 22:27:22 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 22:27:22 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 22:27:24 [INFO    ] spj.ventas: ✅ Eventos del sistema conectados correctamente
+2026-02-27 22:27:24 [INFO    ] spj.ventas: ✅ Tema 'Oscuro Moderno' aplicado correctamente al módulo de ventas
+2026-02-27 22:34:55 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\errors.log
+2026-02-27 22:34:58 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\data\punto_venta.db
+2026-02-27 22:34:58 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 22:34:58 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 22:34:59 [INFO    ] spj.ventas: ✅ Eventos del sistema conectados correctamente
+2026-02-27 22:34:59 [INFO    ] spj.ventas: ✅ Tema 'Oscuro Moderno' aplicado correctamente al módulo de ventas
+2026-02-27 22:35:43 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\errors.log
+2026-02-27 22:35:45 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\data\punto_venta.db
+2026-02-27 22:35:45 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 22:35:45 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 22:35:46 [INFO    ] spj.ventas: ✅ Eventos del sistema conectados correctamente
+2026-02-27 22:35:46 [INFO    ] spj.ventas: ✅ Tema 'Oscuro Moderno' aplicado correctamente al módulo de ventas
+2026-02-27 22:37:59 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\errors.log
+2026-02-27 22:38:02 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\data\punto_venta.db
+2026-02-27 22:38:02 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 22:38:02 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 22:38:03 [INFO    ] spj.ventas: ✅ Eventos del sistema conectados correctamente
+2026-02-27 22:38:03 [INFO    ] spj.ventas: ✅ Tema 'Oscuro Moderno' aplicado correctamente al módulo de ventas
+2026-02-27 22:39:03 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\errors.log
+2026-02-27 22:39:05 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\data\punto_venta.db
+2026-02-27 22:39:05 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 22:39:05 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 22:39:05 [INFO    ] spj.ventas: ✅ Eventos del sistema conectados correctamente
+2026-02-27 22:39:05 [INFO    ] spj.ventas: ✅ Tema 'Oscuro Moderno' aplicado correctamente al módulo de ventas
+2026-02-27 22:40:53 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\errors.log
+2026-02-27 22:40:55 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\data\punto_venta.db
+2026-02-27 22:40:55 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 22:40:55 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 22:40:56 [INFO    ] spj.ventas: ✅ Eventos del sistema conectados correctamente
+2026-02-27 22:40:56 [INFO    ] spj.ventas: ✅ Tema 'Oscuro Moderno' aplicado correctamente al módulo de ventas
+2026-02-27 22:43:17 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\errors.log
+2026-02-27 22:43:20 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\data\punto_venta.db
+2026-02-27 22:43:20 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 22:43:20 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 22:43:21 [INFO    ] spj.ventas: ✅ Eventos del sistema conectados correctamente
+2026-02-27 22:43:21 [INFO    ] spj.ventas: ✅ Tema 'Oscuro Moderno' aplicado correctamente al módulo de ventas
+2026-02-27 22:43:23 [INFO    ] spj.ventas: ✅ Tema 'Oscuro Moderno' aplicado correctamente al módulo de ventas
+2026-02-27 22:43:39 [INFO    ] spj.security: Login exitoso: usuario=admin rol=admin
+2026-02-27 22:43:39 [INFO    ] spj.ventas: ✅ Ventas → sucursal activa: Principal (id=1)
+2026-02-27 22:43:43 [INFO    ] spj.main: Login OK: admin (admin) → sucursal Principal
+2026-02-27 23:09:42 [INFO    ] spj: Logging enterprise iniciado → app=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\app.log | errors=c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\logs\errors.log
+2026-02-27 23:09:47 [INFO    ] spj.main: BD: c:\Users\Diego Rodriguez\Downloads\SPJ_POS_v10_final\SPJ_POS_v10_final\data\punto_venta.db
+2026-02-27 23:09:47 [INFO    ] spj.main: Sistema SPJ iniciado OK
+2026-02-27 23:09:47 [WARNING ] spj.main: SyncWorker no pudo arrancar (no crítico): 'SyncWorker' object has no attribute 'setDaemon'
+2026-02-27 23:09:52 [INFO    ] spj.ventas: ✅ Eventos del sistema conectados correctamente
+2026-02-27 23:09:52 [INFO    ] spj.ventas: ✅ Tema 'Oscuro Moderno' aplicado correctamente al módulo de ventas
+2026-02-27 23:10:27 [INFO    ] spj.ventas: ✅ Tema 'Oscuro Moderno' aplicado correctamente al módulo de ventas
