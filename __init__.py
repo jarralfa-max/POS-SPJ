@@ -1,1 +1,30 @@
-# core/domain — Domain Models SPJ Enterprise v9.1
+# core/events/__init__.py
+from core.events.event_bus import (
+    EventBus,
+    get_bus,
+    VENTA_COMPLETADA,
+    COMPRA_REGISTRADA,
+    RECEPCION_CONFIRMADA,
+    TRASPASO_INICIADO,
+    TRASPASO_CONFIRMADO,
+    STOCK_BAJO_MINIMO,
+    CONCILIACION_DIFERENCIA,
+    TARJETA_ESCANEADA,
+    AJUSTE_INVENTARIO,
+    SESION_INICIADA,
+)
+
+__all__ = [
+    "EventBus",
+    "get_bus",
+    "VENTA_COMPLETADA",
+    "COMPRA_REGISTRADA",
+    "RECEPCION_CONFIRMADA",
+    "TRASPASO_INICIADO",
+    "TRASPASO_CONFIRMADO",
+    "STOCK_BAJO_MINIMO",
+    "CONCILIACION_DIFERENCIA",
+    "TARJETA_ESCANEADA",
+    "AJUSTE_INVENTARIO",
+    "SESION_INICIADA",
+]
