@@ -1,287 +1,240 @@
-# repositories/caja.py
-# ── CajaRepository — Enterprise Repository Layer ─────────────────────────────
-# All cash-drawer operations go through this class.
-# No SQL in UI modules. Enforces atomic writes, operation_id idempotency,
-# branch filtering, and immediate caja accumulator update.
+# modulos/caja.py
+# Block 8: Enterprise Cash Drawer Module - No raw SQL, full repository usage
 from __future__ import annotations
-
-import logging
-import uuid
-from datetime import datetime
-from decimal import Decimal
-from typing import Dict, List, Optional
-
+import logging, os, csv
+from datetime import date
+from PyQt5.QtWidgets import (
+    QWidget, QVBoxLayout, QHBoxLayout, QLabel, QGroupBox, QDateEdit,
+    QComboBox, QPushButton, QTableWidget, QTableWidgetItem, QAbstractItemView,
+    QMessageBox, QDialog, QFormLayout, QDoubleSpinBox, QTextEdit, QFrame,
+    QHeaderView, QSizePolicy, QLineEdit, QFileDialog
+)
+from PyQt5.QtCore import Qt, QDate, QTimer
+from PyQt5.QtGui import QPixmap, QColor, QFont
+from .base import ModuloBase
+from repositories.caja import CajaRepository, CajaError
 from core.events.event_bus import EventBus
 
-logger = logging.getLogger("spj.repositories.caja")
+logger = logging.getLogger("spj.ui.caja")
+VENTA_COMPLETADA = "VENTA_COMPLETADA"
+CAJA_MOVIMIENTO  = "CAJA_MOVIMIENTO"
+_CLR_POS = "#27ae60"; _CLR_NEG = "#e74c3c"; _CLR_NEUTRAL = "#2980b9"
+_CLR_HDR_BG = "#1a252f"; _CLR_HDR_FG = "#ecf0f1"
 
-CAJA_MOVIMIENTO = "CAJA_MOVIMIENTO"
+class ModuloCaja(ModuloBase):
+    def __init__(self, conexion, usuario_actual: str, main_window=None, parent=None):
+        super().__init__(conexion, parent)
+        self.conexion = conexion
+        self.usuario_actual = usuario_actual or "Sistema"
+        self.rol_usuario = ""; self.main_window = main_window
+        self.sucursal_id = 1; self.sucursal_nombre = "Principal"
+        self._repo = CajaRepository(conexion)
+        self._init_ui(); self._subscribe_events()
+        QTimer.singleShot(0, self._refresh)
 
-ALLOWED_TYPES = frozenset({"INGRESO", "EGRESO", "APERTURA", "CIERRE", "AJUSTE"})
+    def set_sucursal(self, sucursal_id: int, sucursal_nombre: str) -> None:
+        self.sucursal_id = sucursal_id; self.sucursal_nombre = sucursal_nombre
+        QTimer.singleShot(0, self._refresh)
+
+    def set_usuario_actual(self, usuario: str, rol: str) -> None:
+        self.usuario_actual = usuario or "Sistema"; self.rol_usuario = rol or ""
+
+    def obtener_usuario_actual(self) -> str:
+        return self.usuario_actual
+
+    def _subscribe_events(self) -> None:
+        EventBus.subscribe(VENTA_COMPLETADA, lambda _: QTimer.singleShot(0, self._refresh_resumen))
+        EventBus.subscribe(CAJA_MOVIMIENTO,  lambda _: QTimer.singleShot(0, self._refresh))
+
+    def _init_ui(self) -> None:
+        root = QVBoxLayout(self); root.setContentsMargins(16,16,16,16); root.setSpacing(12)
+        # Header
+        hdr = QHBoxLayout()
+        if os.path.exists("logo.png"):
+            pix = QPixmap("logo.png")
+            if not pix.isNull():
+                lbl = QLabel(); lbl.setPixmap(pix.scaled(48,48,Qt.KeepAspectRatio,Qt.SmoothTransformation))
+                hdr.addWidget(lbl)
+        title = QLabel("Gestión de Caja"); title.setObjectName("tituloPrincipal")
+        f = title.font(); f.setPointSize(16); f.setBold(True); title.setFont(f)
+        hdr.addWidget(title); hdr.addStretch()
+        self.lbl_sucursal = QLabel(); self.lbl_sucursal.setStyleSheet("color:#7f8c8d;font-size:12px;")
+        hdr.addWidget(self.lbl_sucursal); root.addLayout(hdr)
+        # KPI cards
+        kpi_lay = QHBoxLayout()
+        self.kpi_ingresos = self._kpi("Ingresos del Día","$ 0.00",_CLR_POS)
+        self.kpi_egresos  = self._kpi("Egresos del Día","$ 0.00",_CLR_NEG)
+        self.kpi_balance  = self._kpi("Balance Neto","$ 0.00",_CLR_NEUTRAL)
+        self.kpi_tickets  = self._kpi("Tickets","0","#8e44ad")
+        for c in (self.kpi_ingresos,self.kpi_egresos,self.kpi_balance,self.kpi_tickets):
+            kpi_lay.addWidget(c)
+        root.addLayout(kpi_lay)
+        # Filters
+        fb = QGroupBox("Filtros"); fl = QHBoxLayout()
+        self.date_ini = QDateEdit(QDate.currentDate()); self.date_ini.setCalendarPopup(True); self.date_ini.setDisplayFormat("dd/MM/yyyy")
+        self.date_fin = QDateEdit(QDate.currentDate()); self.date_fin.setCalendarPopup(True); self.date_fin.setDisplayFormat("dd/MM/yyyy")
+        self.combo_tipo = QComboBox(); self.combo_tipo.addItems(["Todos","INGRESO","EGRESO","APERTURA","CIERRE","AJUSTE"])
+        btn_f = QPushButton("Filtrar"); btn_f.clicked.connect(self._refresh)
+        btn_h = QPushButton("Hoy"); btn_h.clicked.connect(self._set_today)
+        for lbl,w in [("Desde:",self.date_ini),("Hasta:",self.date_fin),("Tipo:",self.combo_tipo)]:
+            fl.addWidget(QLabel(lbl)); fl.addWidget(w)
+        fl.addWidget(btn_f); fl.addWidget(btn_h); fl.addStretch(); fb.setLayout(fl); root.addWidget(fb)
+        # Action buttons
+        br = QHBoxLayout()
+        self.btn_ap = QPushButton("🔓 Apertura"); self.btn_ap.clicked.connect(self._apertura)
+        self.btn_ap.setStyleSheet(f"background:{_CLR_POS};color:white;font-weight:bold;padding:8px 14px;border-radius:4px;")
+        self.btn_eg = QPushButton("➖ Egreso"); self.btn_eg.clicked.connect(self._egreso)
+        self.btn_eg.setStyleSheet(f"background:{_CLR_NEG};color:white;font-weight:bold;padding:8px 14px;border-radius:4px;")
+        self.btn_ci = QPushButton("🔒 Cierre"); self.btn_ci.clicked.connect(self._cierre)
+        self.btn_ci.setStyleSheet("background:#e67e22;color:white;font-weight:bold;padding:8px 14px;border-radius:4px;")
+        self.btn_ex = QPushButton("📊 Exportar CSV"); self.btn_ex.clicked.connect(self._exportar)
+        for b in (self.btn_ap,self.btn_eg,self.btn_ci,self.btn_ex): br.addWidget(b)
+        br.addStretch(); root.addLayout(br)
+        # Table
+        self.tabla = QTableWidget()
+        cols = ["ID","Tipo","Monto","Usuario","Referencia","Forma Pago","Fecha/Hora"]
+        self.tabla.setColumnCount(len(cols)); self.tabla.setHorizontalHeaderLabels(cols)
+        self.tabla.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.tabla.setSelectionBehavior(QAbstractItemView.SelectRows)
+        self.tabla.setAlternatingRowColors(True); self.tabla.setSortingEnabled(True)
+        hh = self.tabla.horizontalHeader(); hh.setSectionResizeMode(4,QHeaderView.Stretch)
+        hh.setStyleSheet(f"QHeaderView::section{{background:{_CLR_HDR_BG};color:{_CLR_HDR_FG};font-weight:bold;padding:6px;}}")
+        root.addWidget(self.tabla)
+        # Forma pago breakdown
+        fpb = QGroupBox("Desglose por Forma de Pago"); fpl = QVBoxLayout()
+        self.tabla_fp = QTableWidget(0,3); self.tabla_fp.setHorizontalHeaderLabels(["Forma de Pago","Total","Transacciones"])
+        self.tabla_fp.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.tabla_fp.setMaximumHeight(150); self.tabla_fp.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        fpl.addWidget(self.tabla_fp); fpb.setLayout(fpl); root.addWidget(fpb)
+
+    def _kpi(self, title: str, value: str, color: str) -> QFrame:
+        card = QFrame()
+        card.setStyleSheet(f"QFrame{{background:white;border:none;border-left:4px solid {color};border-radius:6px;padding:8px;}}")
+        card.setSizePolicy(QSizePolicy.Expanding,QSizePolicy.Fixed); card.setFixedHeight(80)
+        lay = QVBoxLayout(card); lay.setContentsMargins(8,4,8,4)
+        lt = QLabel(title); lt.setStyleSheet("color:#7f8c8d;font-size:11px;")
+        lv = QLabel(value); lv.setStyleSheet(f"color:{color};font-size:20px;font-weight:bold;")
+        lay.addWidget(lt); lay.addWidget(lv); card._val = lv; return card
+
+    def _refresh(self) -> None:
+        self.lbl_sucursal.setText(f"Sucursal: {self.sucursal_nombre}")
+        fd = self.date_ini.date().toString("yyyy-MM-dd"); fh = self.date_fin.date().toString("yyyy-MM-dd")
+        tipo = self.combo_tipo.currentText()
+        try:
+            movs = self._repo.get_movimientos(self.sucursal_id,fecha_desde=f"{fd} 00:00:00",fecha_hasta=f"{fh} 23:59:59",tipo=tipo if tipo!="Todos" else None)
+            self._fill_table(movs); self._refresh_resumen(); self._refresh_fp(fd,fh)
+        except Exception as e: logger.error("caja refresh: %s", e)
+
+    def _refresh_resumen(self) -> None:
+        today = date.today().isoformat()
+        try:
+            r = self._repo.get_resumen_dia(self.sucursal_id, today)
+            self.kpi_ingresos._val.setText(f"$ {r['INGRESO']['total']:,.2f}")
+            self.kpi_egresos._val.setText(f"$ {r['EGRESO']['total']:,.2f}")
+            bal = r["balance_neto"]
+            self.kpi_balance._val.setText(f"$ {bal:,.2f}")
+            self.kpi_balance._val.setStyleSheet(f"color:{_CLR_POS if bal>=0 else _CLR_NEG};font-size:20px;font-weight:bold;")
+            self.kpi_tickets._val.setText(str(r["INGRESO"]["count"]))
+        except Exception as e: logger.error("resumen: %s", e)
+
+    def _refresh_fp(self, fd: str, fh: str) -> None:
+        try:
+            rows = self._repo.get_forma_pago_breakdown(self.sucursal_id, fd, fh)
+            self.tabla_fp.setRowCount(len(rows))
+            for i,r in enumerate(rows):
+                self.tabla_fp.setItem(i,0,QTableWidgetItem(r["forma_pago"]))
+                self.tabla_fp.setItem(i,1,QTableWidgetItem(f"$ {r['total']:,.2f}"))
+                self.tabla_fp.setItem(i,2,QTableWidgetItem(str(r["count"])))
+        except Exception as e: logger.error("fp: %s", e)
+
+    def _fill_table(self, movs: list) -> None:
+        colors = {"INGRESO":_CLR_POS,"EGRESO":_CLR_NEG,"APERTURA":"#27ae60","CIERRE":"#e67e22","AJUSTE":"#8e44ad"}
+        self.tabla.setRowCount(len(movs))
+        for i,m in enumerate(movs):
+            clr = QColor(colors.get(m.get("operation_type",""),"#2c3e50"))
+            vals = [str(m.get("id","")),m.get("operation_type",""),f"$ {float(m.get('amount',0)):,.2f}",
+                    m.get("usuario",""),m.get("reference","") or m.get("notes",""),
+                    m.get("forma_pago","") or "—",(m.get("created_at","") or "")[:19]]
+            for j,v in enumerate(vals):
+                item = QTableWidgetItem(v)
+                if j==1: item.setForeground(clr); item.setFont(QFont("",weight=QFont.Bold))
+                self.tabla.setItem(i,j,item)
+
+    def _set_today(self) -> None:
+        t = QDate.currentDate(); self.date_ini.setDate(t); self.date_fin.setDate(t); self._refresh()
+
+    def _apertura(self) -> None:
+        try:
+            if self._repo.has_apertura_today(self.sucursal_id):
+                QMessageBox.warning(self,"Caja","Ya existe apertura registrada hoy."); return
+        except Exception: pass
+        dlg = _MontoDialog("Apertura de Caja","Monto inicial:",self)
+        if dlg.exec_() != QDialog.Accepted: return
+        try:
+            op = self._repo.apertura_caja(self.sucursal_id,self.usuario_actual,dlg.monto(),dlg.notas())
+            QMessageBox.information(self,"Caja",f"Apertura registrada.\nOp: {op[:8]}...")
+            self._refresh()
+        except Exception as e: QMessageBox.critical(self,"Error",str(e))
+
+    def _egreso(self) -> None:
+        dlg = _EgresoDialog(self)
+        if dlg.exec_() != QDialog.Accepted: return
+        m = dlg.monto()
+        if m <= 0: QMessageBox.warning(self,"Caja","El monto debe ser mayor a 0."); return
+        try:
+            op = self._repo.egreso(self.sucursal_id,self.usuario_actual,m,dlg.concepto())
+            QMessageBox.information(self,"Caja",f"Egreso registrado.\nOp: {op[:8]}...")
+            self._refresh()
+        except Exception as e: QMessageBox.critical(self,"Error",str(e))
+
+    def _cierre(self) -> None:
+        try:
+            r = self._repo.get_resumen_dia(self.sucursal_id,date.today().isoformat())
+            msg = f"Balance del día: $ {r['balance_neto']:,.2f}\n\n¿Confirmar cierre?"
+        except Exception: msg = "¿Confirmar cierre de caja?"
+        if QMessageBox.question(self,"Cierre",msg,QMessageBox.Yes|QMessageBox.No) != QMessageBox.Yes: return
+        dlg = _MontoDialog("Cierre de Caja","Monto final contado:",self)
+        if dlg.exec_() != QDialog.Accepted: return
+        try:
+            op = self._repo.cierre_caja(self.sucursal_id,self.usuario_actual,dlg.monto(),dlg.notas())
+            QMessageBox.information(self,"Caja",f"Cierre registrado.\nOp: {op[:8]}...")
+            self._refresh()
+        except Exception as e: QMessageBox.critical(self,"Error",str(e))
+
+    def _exportar(self) -> None:
+        path,_ = QFileDialog.getSaveFileName(self,"Exportar",f"caja_{date.today().isoformat()}.csv","CSV (*.csv)")
+        if not path: return
+        fd = self.date_ini.date().toString("yyyy-MM-dd"); fh = self.date_fin.date().toString("yyyy-MM-dd")
+        try:
+            movs = self._repo.get_movimientos(self.sucursal_id,fecha_desde=f"{fd} 00:00:00",fecha_hasta=f"{fh} 23:59:59")
+            with open(path,"w",newline="",encoding="utf-8") as f:
+                w = csv.DictWriter(f,fieldnames=["id","operation_type","amount","usuario","reference","forma_pago","created_at"])
+                w.writeheader()
+                for m in movs: w.writerow({k:m.get(k) for k in w.fieldnames})
+            QMessageBox.information(self,"Exportar",f"Exportado: {path}")
+        except Exception as e: QMessageBox.critical(self,"Error",str(e))
 
 
-class CajaError(Exception):
-    pass
+class _MontoDialog(QDialog):
+    def __init__(self,title,label,parent=None):
+        super().__init__(parent); self.setWindowTitle(title); self.setMinimumWidth(320)
+        lay = QFormLayout(self)
+        self._spin = QDoubleSpinBox(); self._spin.setRange(0,9999999); self._spin.setDecimals(2); self._spin.setPrefix("$ ")
+        self._obs = QTextEdit(); self._obs.setPlaceholderText("Observaciones"); self._obs.setMaximumHeight(60)
+        lay.addRow(label,self._spin); lay.addRow("Observaciones:",self._obs)
+        bh = QHBoxLayout(); ok = QPushButton("Confirmar"); ok.clicked.connect(self.accept)
+        cn = QPushButton("Cancelar"); cn.clicked.connect(self.reject); bh.addWidget(ok); bh.addWidget(cn); lay.addRow(bh)
+    def monto(self): return self._spin.value()
+    def notas(self): return self._obs.toPlainText().strip()
 
-
-class CajaDuplicadaError(CajaError):
-    pass
-
-
-class CajaMontoInvalidoError(CajaError):
-    pass
-
-
-class CajaRepository:
-
-    def __init__(self, db):
-        self.db = db
-
-    def _now(self) -> str:
-        return datetime.utcnow().isoformat()
-
-    # ── Read ──────────────────────────────────────────────────────────────────
-
-    def get_movimientos(
-        self,
-        branch_id: int,
-        *,
-        fecha_desde: Optional[str] = None,
-        fecha_hasta: Optional[str] = None,
-        tipo: Optional[str] = None,
-        limit: int = 500,
-    ) -> List[Dict]:
-        conditions = ["co.branch_id = ?"]
-        params: List = [branch_id]
-        if fecha_desde:
-            conditions.append("co.created_at >= ?")
-            params.append(fecha_desde)
-        if fecha_hasta:
-            conditions.append("co.created_at <= ?")
-            params.append(fecha_hasta)
-        if tipo and tipo != "Todos":
-            conditions.append("co.operation_type = ?")
-            params.append(tipo)
-        where = "WHERE " + " AND ".join(conditions)
-        params.append(limit)
-        rows = self.db.fetchall(f"""
-            SELECT co.id, co.operation_id, co.operation_type,
-                   co.amount, co.usuario, co.reference,
-                   co.forma_pago, co.venta_id, co.notes,
-                   co.created_at
-            FROM caja_operations co
-            {where}
-            ORDER BY co.created_at DESC
-            LIMIT ?
-        """, params)
-        return [dict(r) for r in rows]
-
-    def get_resumen_dia(self, branch_id: int, fecha: str) -> Dict:
-        fecha_ini = f"{fecha} 00:00:00"
-        fecha_fin = f"{fecha} 23:59:59"
-        rows = self.db.fetchall("""
-            SELECT operation_type,
-                   SUM(amount)  AS total,
-                   COUNT(*)     AS count
-            FROM caja_operations
-            WHERE branch_id = ?
-              AND created_at BETWEEN ? AND ?
-            GROUP BY operation_type
-        """, (branch_id, fecha_ini, fecha_fin))
-        resumen: Dict = {t: {"total": 0.0, "count": 0} for t in ALLOWED_TYPES}
-        for row in rows:
-            t = row["operation_type"]
-            if t in resumen:
-                resumen[t] = {
-                    "total": float(row["total"] or 0),
-                    "count": int(row["count"] or 0),
-                }
-        ingresos = resumen["INGRESO"]["total"]
-        egresos  = resumen["EGRESO"]["total"]
-        resumen["balance_neto"] = round(ingresos - egresos, 2)
-        return resumen
-
-    def get_resumen_periodo(
-        self, branch_id: int, fecha_desde: str, fecha_hasta: str
-    ) -> Dict:
-        rows = self.db.fetchall("""
-            SELECT operation_type,
-                   SUM(amount) AS total,
-                   COUNT(*)    AS count
-            FROM caja_operations
-            WHERE branch_id = ?
-              AND DATE(created_at) BETWEEN DATE(?) AND DATE(?)
-            GROUP BY operation_type
-        """, (branch_id, fecha_desde, fecha_hasta))
-        resumen: Dict = {t: {"total": 0.0, "count": 0} for t in ALLOWED_TYPES}
-        for row in rows:
-            t = row["operation_type"]
-            if t in resumen:
-                resumen[t] = {
-                    "total": float(row["total"] or 0),
-                    "count": int(row["count"] or 0),
-                }
-        ingresos = resumen["INGRESO"]["total"]
-        egresos  = resumen["EGRESO"]["total"]
-        resumen["balance_neto"] = round(ingresos - egresos, 2)
-        return resumen
-
-    def get_forma_pago_breakdown(
-        self, branch_id: int, fecha_desde: str, fecha_hasta: str
-    ) -> List[Dict]:
-        rows = self.db.fetchall("""
-            SELECT COALESCE(forma_pago, 'No especificado') AS forma_pago,
-                   SUM(amount) AS total,
-                   COUNT(*)    AS count
-            FROM caja_operations
-            WHERE branch_id = ?
-              AND operation_type = 'INGRESO'
-              AND DATE(created_at) BETWEEN DATE(?) AND DATE(?)
-            GROUP BY forma_pago
-            ORDER BY total DESC
-        """, (branch_id, fecha_desde, fecha_hasta))
-        return [dict(r) for r in rows]
-
-    def has_apertura_today(self, branch_id: int) -> bool:
-        today = datetime.utcnow().strftime("%Y-%m-%d")
-        row = self.db.fetchone("""
-            SELECT COUNT(*) AS c FROM caja_operations
-            WHERE branch_id = ? AND operation_type = 'APERTURA'
-              AND DATE(created_at) = ?
-        """, (branch_id, today))
-        return bool(row and row["c"] > 0)
-
-    # ── Write ─────────────────────────────────────────────────────────────────
-
-    def registrar_movimiento(
-        self,
-        branch_id: int,
-        operation_type: str,
-        amount: float,
-        usuario: str,
-        *,
-        reference: str = "",
-        forma_pago: str = "",
-        venta_id: Optional[int] = None,
-        notes: str = "",
-        operation_id: Optional[str] = None,
-    ) -> str:
-        if operation_type not in ALLOWED_TYPES:
-            raise CajaError(f"TIPO_INVALIDO: {operation_type}")
-        if amount < 0:
-            raise CajaMontoInvalidoError("MONTO_NEGATIVO")
-        op_id = operation_id or str(uuid.uuid4())
-
-        # Idempotency check
-        existing = self.db.fetchone(
-            "SELECT id FROM caja_operations WHERE operation_id = ?", (op_id,)
-        )
-        if existing:
-            raise CajaDuplicadaError(f"OPERACION_DUPLICADA: {op_id}")
-
-        with self.db.transaction("CAJA_MOVIMIENTO"):
-            self.db.execute("""
-                INSERT INTO caja_operations (
-                    branch_id, operation_id, operation_type,
-                    amount, usuario, reference,
-                    forma_pago, venta_id, notes, created_at
-                ) VALUES (?,?,?,?,?,?,?,?,?,?)
-            """, (
-                branch_id, op_id, operation_type,
-                abs(amount), usuario, reference or "",
-                forma_pago or "", venta_id, notes or "",
-                self._now(),
-            ))
-            # Mirror to movimientos_caja (legacy compatibility)
-            self.db.execute("""
-                INSERT INTO movimientos_caja (
-                    tipo, monto, descripcion, forma_pago,
-                    usuario, sucursal_id, operation_id, fecha
-                ) VALUES (?,?,?,?,?,?,?,datetime('now'))
-            """, (
-                operation_type, abs(amount),
-                reference or notes or "",
-                forma_pago or "", usuario,
-                branch_id, op_id,
-            ))
-
-        EventBus.publish(CAJA_MOVIMIENTO, {
-            "branch_id":      branch_id,
-            "operation_id":   op_id,
-            "operation_type": operation_type,
-            "amount":         abs(amount),
-            "usuario":        usuario,
-        })
-        logger.info(
-            "caja_operation branch=%d type=%s amount=%.2f op=%s",
-            branch_id, operation_type, abs(amount), op_id
-        )
-        return op_id
-
-    def apertura_caja(
-        self,
-        branch_id: int,
-        usuario: str,
-        monto_inicial: float = 0.0,
-        notes: str = "",
-    ) -> str:
-        if self.has_apertura_today(branch_id):
-            raise CajaError("APERTURA_YA_REGISTRADA_HOY")
-        return self.registrar_movimiento(
-            branch_id=branch_id,
-            operation_type="APERTURA",
-            amount=monto_inicial,
-            usuario=usuario,
-            reference="APERTURA DE CAJA",
-            notes=notes,
-        )
-
-    def cierre_caja(
-        self,
-        branch_id: int,
-        usuario: str,
-        monto_final: float,
-        notes: str = "",
-    ) -> str:
-        return self.registrar_movimiento(
-            branch_id=branch_id,
-            operation_type="CIERRE",
-            amount=monto_final,
-            usuario=usuario,
-            reference="CIERRE DE CAJA",
-            notes=notes,
-        )
-
-    def egreso(
-        self,
-        branch_id: int,
-        usuario: str,
-        monto: float,
-        concepto: str,
-        notes: str = "",
-    ) -> str:
-        if monto <= 0:
-            raise CajaMontoInvalidoError("EGRESO_MONTO_INVALIDO")
-        return self.registrar_movimiento(
-            branch_id=branch_id,
-            operation_type="EGRESO",
-            amount=monto,
-            usuario=usuario,
-            reference=concepto,
-            notes=notes,
-        )
-
-    def ajuste(
-        self,
-        branch_id: int,
-        usuario: str,
-        monto: float,
-        motivo: str,
-    ) -> str:
-        return self.registrar_movimiento(
-            branch_id=branch_id,
-            operation_type="AJUSTE",
-            amount=abs(monto),
-            usuario=usuario,
-            reference=motivo,
-        )
+class _EgresoDialog(QDialog):
+    def __init__(self,parent=None):
+        super().__init__(parent); self.setWindowTitle("Registrar Egreso"); self.setMinimumWidth(340)
+        lay = QFormLayout(self)
+        self._con = QLineEdit(); self._con.setPlaceholderText("Concepto del egreso")
+        self._spin = QDoubleSpinBox(); self._spin.setRange(0.01,9999999); self._spin.setDecimals(2); self._spin.setPrefix("$ ")
+        lay.addRow("Concepto:",self._con); lay.addRow("Monto:",self._spin)
+        bh = QHBoxLayout(); ok = QPushButton("Registrar"); ok.clicked.connect(self.accept)
+        cn = QPushButton("Cancelar"); cn.clicked.connect(self.reject); bh.addWidget(ok); bh.addWidget(cn); lay.addRow(bh)
+    def monto(self): return self._spin.value()
+    def concepto(self): return self._con.text().strip()
