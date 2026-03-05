@@ -1,0 +1,18 @@
+# SPJ POS Enterprise — Dependencias
+# Instalar con: pip install -r requirements.txt
+
+# ── Interfaz gráfica ──────────────────────────────────────────────────────────
+PyQt5>=5.15.0
+
+# ── Seguridad — OBLIGATORIO ───────────────────────────────────────────────────
+# bcrypt es requerido para el cifrado de contraseñas.
+# La aplicación NO arrancará sin esta librería.
+bcrypt>=4.0.1
+
+# ── Hardware ──────────────────────────────────────────────────────────────────
+pyserial>=3.5
+python-escpos>=3.0
+
+# ── Utilidades ────────────────────────────────────────────────────────────────
+qrcode>=7.4
+Pillow>=9.0
